@@ -1,0 +1,9 @@
+baseURL = "https://isbeauty.github.io/"
+languageCode = "en-my"
+title = "Is Beauty"
+
+ignoreFiles = [ "\\.README.md$" ]
+
+[taxonomies]
+  category = "categories"
+  brand = "brands"

@@ -1,0 +1,52 @@
+{{ define "main" }}
+
+<section class="section-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent p-0">
+                        <li class="breadcrumb-item"><a class="text-dark" href="/shops/">Shops</a></li>
+                        <li class="breadcrumb-item"><a class="text-dark" href="/brands/{{.Params.brands | urlize}}/">{{.Params.brands }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <!-- product image slider -->
+        <div class="product-slider">
+            <img class="img-fluid w-100" src="{{ .Params.image }}" alt="product-img">
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <h1 class="h2 font-weight-medium">{{ .Title }}</h1>
+        <!-- rating star -->
+        {{ if site.Params.rating.enable }}
+        <div class="rw-ui-container"></div>
+        {{ end }}
+        <div class="my-4">
+          {{ if .Params.PriceBefore }}
+          <s>{{ site.Params.currencySymbol }}{{ .Params.PriceBefore }}</s>
+          {{ end }}
+          <span class="lead text-primary font-weight-medium">{{ site.Params.currencySymbol }}{{ .Params.Price }}</span>
+        </div>
+        <h5>Short Description</h5>
+        <p>{{ .Params.ShortDescription | markdownify }}</p>
+      </div>
+      <div class="col-12 mt-5">
+        <div class="content">{{ .Content }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ partial "cta.html" . }}
+
+{{ end }}

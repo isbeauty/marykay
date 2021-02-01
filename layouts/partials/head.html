@@ -1,0 +1,31 @@
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+  
+    {{ "<!-- Mobile Responsive Meta -->" | safeHTML }}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
+    {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+    {{ hugo.Generator }}
+  
+    {{ "<!-- Plugins -->" | safeHTML }}
+    {{ range site.Params.plugins.css }}
+    <link rel="stylesheet" href="{{ .link | absURL }}">
+    {{ end }}
+  
+    {{ with site.Params.snipcartApiKey }}
+    {{ "<!-- Snipcart -->" | safeHTML }}
+    <link rel="preconnect" href="https://app.snipcart.com/">
+    <link rel="preconnect" href="https://cdn.snipcart.com/">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.28/default/snipcart.css">
+    <script async src="https://cdn.snipcart.com/themes/v3.0.28/default/snipcart.js"></script>
+    {{ end }}
+  
+    {{ "<!-- Main Stylesheet -->" | safeHTML }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/style.css">
+  
+    {{ "<!-- Favicon -->" | safeHTML }}
+    <link rel="shortcut icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
+    <link rel="icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
+  </head>
